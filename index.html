@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upship</title>
+  <link rel="stylesheet" type="text/css" href="lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+<body ng-app="Upship">
+<!-- 
+<div ng-include="'app/view/partials/login.html'"></div>
+<div ng-include="app/view/partials/allBoards.html'"></div> -->
+<div ng-view>
+</div>
+
+
+
+<!-- SCRIPT TAGS BELOW SCRIPT TAGS BELOW -->
+
+<!-- Dependencies -->
+<script src="lib/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="lib/node_modules/angular/angular.min.js"></script>
+<script src="/lib/node_modules/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="lib/node_modules/firebase/firebase.js"></script>
+<script type="text/javascript" src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+
+<!-- MY DEPENDIES AREN'T W0RKING -->
+<!-- <script type="text/javascript" src="lib/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="lib/node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="lib/node_modules/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="lib/node_modules/firebase/firebase.js"></script> -->
+
+<!-- Providers -->
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/models/values/fbCreds.js"></script>
+<script type="text/javascript" src="app/models/values/glassdoorCreds.js"></script>
+<script type="text/javascript" src="app/models/factories/UserFactory.js"></script>
+<script type="text/javascript" src="app/models/factories/CompanyFactory.js"></script>
+<script type="text/javascript" src="app/models/factories/TopicFactory.js"></script>
+<script type="text/javascript" src="app/models/factories/FeedbackFactory.js"></script>
+
+<!-- Controllers -->
+
+<script type="text/javascript" src="app/controllers/SplashController.js"></script>
+<script type="text/javascript" src="app/controllers/LoginController.js"></script>
+<script type="text/javascript" src="app/controllers/SearchResultsController.js"></script>
+<script type="text/javascript" src="app/controllers/DisplayCompanyController.js"></script>
+
+<!-- Views are tied via ngRoute dependency-->
+
+
+
+
+</body>
+</html>

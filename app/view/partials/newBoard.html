@@ -1,0 +1,18 @@
+
+<div ng-controller="newBoardCtrl">
+<h1>{{title}}</h1>
+<form>
+  <div class="form-group">
+    <label> Title</label>
+    <!-- TODO: Hook up this form to our JS for submitting -->
+    <input type="text" class="form-control" placeholder="Board Title" ng-model="boardObject.Title"/>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input type="text" class="form-control" placeholder="01/12/17" ng-model="boardObject.Description"/>
+  </div>
+  
+  <button class="btn btn-default" ng-click="addBoard()">{{btnText}}</button>
+</form>
+
+</div>
