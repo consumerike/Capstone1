@@ -1,11 +1,11 @@
 "use strict";
-app.factory("BoardFactory", function ($http, fbCreds ) {
+app.factory("FeedbackFactory", function ($http, fbCreds ) {
 
-	let postNewBoard = (boardObject) => {
+	let postNewFeedback = (feedbackObject) => {
 		return new Promise( (resolve, reject) => {
-			$http.post(`${fbCreds.databaseURL}/boards.json`, angular.toJson(boardObject))
-			.success((boardObject) => {
-				resolve(boardObject);
+			$http.post(`${fbCreds.databaseURL}/feedback.json`, angular.toJson(feedbackObject))
+			.success((feedbackObject) => {
+				resolve(feedbackObject);
 			})
 		
 		.error( (error) => {
@@ -15,18 +15,18 @@ app.factory("BoardFactory", function ($http, fbCreds ) {
 
 	};
 
-	let getAllBoards = function () {
+	let getAllFeedback = function () {
 
-		let boards = [];
+		let feedback = [];
     	return new Promise((resolve, reject) => {
-    		$http.get(`${fbCreds.databaseURL}/boards.json`)
-    		.success((boardObject) => {
-    			let boardCollection = boardObject;
-    			Object.keys(boardCollection).forEach((key => {
-    				boardCollection[key].id = key;
-    				boards.push(boardCollection[key]);
+    		$http.get(`${fbCreds.databaseURL}/feedback.json`)
+    		.success((feedbackObject) => {
+    			let feedbackCollection = feedbackObject;
+    			Object.keys(feedbackCollection).forEach((key => {
+    				feedbackCollection[key].id = key;
+    				feedback.push(feedbackCollection[key]);
     			}));
-    			resolve(boards);
+    			resolve(feedback);
     		}).error((error) => {
     			reject(error);
     		});
@@ -35,5 +35,5 @@ app.factory("BoardFactory", function ($http, fbCreds ) {
 
 
 
-	return {postNewBoard, getAllBoards};
+	return {postNewFeedback, getAllFeedback};
 });

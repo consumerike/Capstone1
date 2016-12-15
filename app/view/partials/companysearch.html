@@ -1,9 +1,9 @@
-<div ng-repeat="company in companies | filter: searchText.search"> <!-- One can do a filter of total company results right here if necessary -->
+<div ng-repeat="company in companies">
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-xs-5">{{company.name}}</div>
       <div class="col-xs-5"><img src={{company.squareLogo}}></div>
-      <div class="col-xs-2"><button value="Add" class="btn btn-danger"></button></div>
+      <div ng-click="addCompany(company)"class="col-xs-2"><button value="Add" class="btn btn-danger"></button></div>
     </div>
   </div>
 

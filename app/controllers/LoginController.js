@@ -28,7 +28,8 @@ app.controller('LoginController', function($scope, UserFactory, $location, $wind
 		// currentUser = user.uid;
 		UserFactory.loginUser($scope.account)
 		.then( (user) => {
-			$location.path = "/myfeedback"; 
+			$location.url("/myfeedback"); 
+			$scope.$apply();
 					console.log('user logged in', user);
 		});
 	};
