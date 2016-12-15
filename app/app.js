@@ -23,7 +23,7 @@ app.config( function($routeProvider) {
 
 	.when('/companysearch', { 
 		templateUrl: 'app/view/partials/companysearch.html',
-		controller: 'SearchResultsController'
+		controller: 'SearchResults'
 
 	})
 

@@ -32,8 +32,6 @@ app.factory("UserFactory", function() {
 			});
 		});
 
-
-
 	};
 
 	let getUser = function() {

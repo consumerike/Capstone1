@@ -1,5 +1,36 @@
 "use strict";
-app.factory("BoardFactory", function ($http, fbCreds ) {
+app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, SearchTerm ) {
+
+//this function will give an array of Objects that are companies ("healthcare search queried") in Nashville
+	 let companySearch = () => {
+
+    	let companies = [];
+    	return new Promise((resolve, reject) => {
+    		$http.get("http://api.glassdoor.com/api/api.htm?t.p=109943&t.k=V576ve5mwm&userip=50.207.137.70&useragent=Chrome/54.0.2840.98&format=json&v=1&action=employers&country=United States&l=Nashville, TN&q=healthcare")
+    		.success((EmployerObject) => {
+    			let employerArray = EmployerObject.response.employers;
+    			 employerArray.forEach(( function(element) { 
+    			 	companies.push(element);
+    			   }));
+
+			}); 
+    		resolve(companies);
+    	// 	.error((error) => {
+    	// 		reject(error);
+    	// });
+    	// $location.path('/companysearch');
+       });
+     };	
+	  
+
+
+
+
+
+
+
+
+
 
 	let postNewBoard = (boardObject) => {
 		return new Promise( (resolve, reject) => {
@@ -35,5 +66,5 @@ app.factory("BoardFactory", function ($http, fbCreds ) {
 
 
 
-	return {postNewBoard, getAllBoards};
+	return {companySearch, postNewBoard, getAllBoards};
 });

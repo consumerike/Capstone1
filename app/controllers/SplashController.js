@@ -1,5 +1,5 @@
 "use strict";
-app.controller("SplashController", function($scope, UserFactory, $window) {
+app.controller("SplashController", function($scope, SearchTerm, CompanyFactory, UserFactory, $window, $location) {
 	let currentUser = null;
 	$scope.account = {
 		email: null, 
@@ -14,7 +14,11 @@ app.controller("SplashController", function($scope, UserFactory, $window) {
 
 	// };
 
-	
+	$scope.companySearch = () => { //normally I would want to put in a search term and pass along
+		CompanyFactory.companySearch()
+		.then (
+		$location.path('/companysearch'));
+	};
 
 	$scope.register = () => {
 		UserFactory.createUser($scope.account)
@@ -27,7 +31,7 @@ app.controller("SplashController", function($scope, UserFactory, $window) {
 		// currentUser = user.uid;
 		UserFactory.loginUser($scope.account)
 		.then( (user) => {
-			$location.path = "#/myfeedback"; 
+			$location.path = "/myfeedback"; 
 					console.log('user logged in', user);
 
 
@@ -41,7 +45,7 @@ app.controller("SplashController", function($scope, UserFactory, $window) {
 				});
 			};
 
-		
+	$scope.searchText = SearchTerm;
 
 
 	}); 
