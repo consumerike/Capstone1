@@ -1,5 +1,5 @@
 "use strict";
-app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, SearchTerm ) {
+app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, UserFactory, SearchTerm ) {
 
 
     let companies = [];
@@ -39,11 +39,14 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, S
 
 
 
-	let postNewBoard = (boardObject) => {
+	let postNewCompany = (companyObject) => {
+       
 		return new Promise( (resolve, reject) => {
-			$http.post(`${fbCreds.databaseURL}/boards.json`, angular.toJson(boardObject))
-			.success((boardObject) => {
-				resolve(boardObject);
+            companyObject.uid = UserFactory.getUser();
+            console.log("companyObject.uid",companyObject.uid );
+			$http.post(`${fbCreds.databaseURL}/companies.json`, angular.toJson(companyObject))
+			.success((companyObject) => {
+				resolve(companyObject);
 			})
 		
 		.error( (error) => {
@@ -73,5 +76,5 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, S
 
 
 
-	return {companySearch, postNewBoard, getCompanies, getAllBoards};
+	return {companySearch, postNewCompany, getCompanies, getAllBoards};
 });

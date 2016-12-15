@@ -2,6 +2,18 @@
 
 var app = angular.module("Upship", ["ngRoute"]); 
 
+let isAuth = (UserFactory) => new Promise((resolve, reject) => {
+	UserFactory.isAuthenticated()
+	.then( (userExists) => {
+		if(userExists) {
+			resolve();
+		}
+		else {
+			reject();
+		}
+	});
+});
+
 app.run (($location, fbCreds) => {
 	let creds = fbCreds; 
 	let authConfig = {
@@ -19,6 +31,7 @@ app.config( function($routeProvider) {
 		templateUrl: 'app/view/partials/login.html',
 		controller: 'LoginController'
 
+
 	})
 
 	.when('/companysearch', { 
@@ -26,6 +39,8 @@ app.config( function($routeProvider) {
 		controller: 'SearchResults'
 
 	})
+
+	
 
 	.when('/login', { 
 		templateUrl: 'app/view/partials/login.html',
@@ -38,11 +53,15 @@ app.config( function($routeProvider) {
 	})	
 	.when('/companyfeedback/:companyId', {
 		templateUrl: 'app/view/partials/companyfeedback.html',
-		controller: 'CompanyFeedbackController'
+		controller: 'CompanyFeedbackController',
+		resolve: {isAuth}
+
 	})	
 	.when('/topic/:topicID', {
 		templateUrl: 'app/view/partials/topicmodal.html',
-		controller: 'TopicController'
+		controller: 'TopicController',
+		resolve: {isAuth}
+
 	})
 	.otherwise('/');
 
