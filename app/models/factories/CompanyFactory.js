@@ -3,6 +3,7 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
 
 
     let companies = [];
+    let myCompanies = [];
 
 //this function will give an array of Objects that are companies ("healthcare search queried") in Nashville
 	 let companySearch = (searchTerms) => {
@@ -32,6 +33,9 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
         return companies;
      };
 
+     let getUserCompanies = function() {
+       return myCompanies;
+     };
 
 
 
@@ -56,9 +60,9 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
 
 	};
 
-	let myCompanies = function () {
+	let userCompanies = function () {
 
-		let myCompanies = [];
+		
     	return new Promise((resolve, reject) => {
     		$http.get(`${fbCreds.databaseURL}/companies.json`)
     		.success((companyObject) => {
@@ -76,12 +80,9 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
     	});
     };
 
-  let getMyCompanies = function() {
-    return myCompanies;
-  };
+  
 
 
 
-
-	return {companySearch, postNewCompany, getCompanies, myCompanies, getMyCompanies};
+	return {companySearch, postNewCompany, getCompanies, myCompanies, userCompanies, getUserCompanies};
 });

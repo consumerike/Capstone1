@@ -1,6 +1,6 @@
 "use strict"; 
 
-app.controller('LoginController', function($scope, UserFactory, $location, $window){
+app.controller('LoginController', function($scope, UserFactory, CompanyFactory, $location, $window){
 	let currentUser = null;
 	$scope.account = {
 		email: null, 
@@ -28,8 +28,9 @@ app.controller('LoginController', function($scope, UserFactory, $location, $wind
 		// currentUser = user.uid;
 		UserFactory.loginUser($scope.account)
 		.then( (user) => {
-			$location.url("/myfeedback"); 
+			CompanyFactory.userCompanies();
 			$scope.$apply();
+			$location.url("/myfeedback"); 
 					console.log('user logged in', user);
 		});
 	};
