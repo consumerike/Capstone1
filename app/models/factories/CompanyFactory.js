@@ -56,7 +56,7 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
 
 	};
 
-	let getAllBoards = function () {
+	let getMyCompanies = function () {
 
 		let boards = [];
     	return new Promise((resolve, reject) => {
@@ -76,5 +76,5 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
 
 
 
-	return {companySearch, postNewCompany, getCompanies, getAllBoards};
+	return {companySearch, postNewCompany, getCompanies, getMyCompanies};
 });

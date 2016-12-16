@@ -1,8 +1,8 @@
 "use strict";
-app.controller("MyFeedbackController", function (UserFactory, FeedbackFactory, $scope, $location) {
+app.controller("MyFeedbackController", function (UserFactory, CompanyFactory, FeedbackFactory, $scope, $location) {
 
-	$scope.userName = "Ike";
-	$scope.feedback = false;
+	$scope.userName = "Friend";
+	$scope.companies = CompanyFactory.getCompanies();
 
 	// UserFactory.getUser().
 	// then( (user) => {
