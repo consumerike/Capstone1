@@ -56,25 +56,32 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
 
 	};
 
-	let getMyCompanies = function () {
+	let myCompanies = function () {
 
-		let boards = [];
+		let myCompanies = [];
     	return new Promise((resolve, reject) => {
-    		$http.get(`${fbCreds.databaseURL}/boards.json`)
-    		.success((boardObject) => {
-    			let boardCollection = boardObject;
-    			Object.keys(boardCollection).forEach((key => {
-    				boardCollection[key].id = key;
-    				boards.push(boardCollection[key]);
+    		$http.get(`${fbCreds.databaseURL}/companies.json`)
+    		.success((companyObject) => {
+                console.log("what is companyObject?", companyObject);
+    			let companyCollection = companyObject;
+    			Object.keys(companyCollection).forEach((key => {
+    				companyCollection[key].id = key;
+    				myCompanies.push(companyCollection[key]);
     			}));
-    			resolve(boards);
+                console.log("what are myCompanies?",myCompanies );
+    			resolve(myCompanies);
     		}).error((error) => {
     			reject(error);
     		});
     	});
     };
 
+  let getMyCompanies = function() {
+    return myCompanies;
+  };
 
 
-	return {companySearch, postNewCompany, getCompanies, getMyCompanies};
+
+
+	return {companySearch, postNewCompany, getCompanies, myCompanies, getMyCompanies};
 });
