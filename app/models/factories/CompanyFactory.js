@@ -50,6 +50,8 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
             console.log("companyObject.uid",companyObject.uid );
 			$http.post(`${fbCreds.databaseURL}/companies.json`, angular.toJson(companyObject))
 			.success((companyObject) => {
+                console.log("can i add a new key here?", companyObject );
+                companyObject.companyId = companyObject.name;
 				resolve(companyObject);
 			})
 		

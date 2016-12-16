@@ -38,6 +38,7 @@ app.controller("SearchResults", function($scope, CompanyFactory, SearchTerm, Use
     console.log("UserFactory.getUser()", UserFactory.getUser() );
       CompanyFactory.postNewCompany(company)
       .then ( (response) => {
+        console.log("what's the response here??",response );
          $scope.$apply();
       });
     }

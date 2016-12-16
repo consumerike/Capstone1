@@ -1,9 +1,17 @@
 "use strict";
-app.controller("MyFeedbackController", function (UserFactory, CompanyFactory, $scope) {
+app.controller("MyFeedbackController", function (UserFactory, $window, FeedbackFactory, CompanyFactory, $scope) {
 	$scope.userName = "Friend";
 	$scope.myCompanies = CompanyFactory.getUserCompanies();
 	console.log("isn't this weird?",$scope.myCompanies );
 
+	$scope.addFeedback = function (company){
+		company.topics = [];
+	    company.topicName = $window.prompt("enter topic");
+	    company.rating = $window.prompt("enter topic rating between 1-5");
+	    company.feedbackMsg = $window.prompt("enter your feedback");
+		FeedbackFactory.postNewFeedback(company);
+      };
+	
 	// .then((response) => {
 	// 	CompanyFactory.getUserCompanies();
 	// });

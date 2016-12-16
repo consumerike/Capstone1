@@ -3,6 +3,7 @@ app.factory("FeedbackFactory", function ($http, fbCreds ) {
 
 	let postNewFeedback = (feedbackObject) => {
 		return new Promise( (resolve, reject) => {
+			// feedbackObject.companyUID = 
 			$http.post(`${fbCreds.databaseURL}/feedback.json`, angular.toJson(feedbackObject))
 			.success((feedbackObject) => {
 				resolve(feedbackObject);
