@@ -1,13 +1,10 @@
 <h1>Hello {{userName}}</h1>
 
  <div ng-repeat="company in myCompanies">
- 	<img src={{company.squareLogo}}>
- <div ng-click="addFeedback(company)"class="col-xs-2"><button value="Add Topics" class="btn btn-danger"></button></div>
- 	
+ 	<a ng-href="#/myfeedback/:companyId"><img src={{company.squareLogo}}></a>
+ <div ng-click="goToCompanyPage(company)"class="col-xs-2"><button value="Add Topics" class="btn btn-danger"></button></div>
+ 
  </div>
 
 <h2>Begin by searching for a company above!</h2>
-
-
-
 

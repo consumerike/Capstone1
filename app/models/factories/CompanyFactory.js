@@ -1,7 +1,6 @@
 "use strict";
 app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, UserFactory, SearchTerm ) {
 
-
     let companies = [];
     let myCompanies = [];
 
@@ -28,7 +27,6 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
        });
      };	
 	  
-
      let getCompanies = function() {
         return companies;
      };
@@ -37,7 +35,16 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
        return myCompanies;
      };
 
-
+     let getSingleCo = (companyId) => {
+        console.log("running getSinglco");
+        return new Promise((resolve, reject) => {
+            $http.get(`${fbCreds.URL}/companies.json?"${companyId}"`)
+            .success((companyObject) => {
+                resolve(companyObject);
+            }
+            );
+        });
+     };
 
 
 
@@ -86,5 +93,5 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
 
 
 
-	return {companySearch, postNewCompany, getCompanies, myCompanies, userCompanies, getUserCompanies};
+	return {companySearch,getSingleCo, postNewCompany, getCompanies, myCompanies, userCompanies, getUserCompanies};
 });

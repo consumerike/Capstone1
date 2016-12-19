@@ -6,6 +6,7 @@ app.factory("FeedbackFactory", function ($http, fbCreds ) {
 			// feedbackObject.companyUID = 
 			$http.post(`${fbCreds.databaseURL}/feedback.json`, angular.toJson(feedbackObject))
 			.success((feedbackObject) => {
+
 				resolve(feedbackObject);
 			})
 		
@@ -14,6 +15,21 @@ app.factory("FeedbackFactory", function ($http, fbCreds ) {
 		});
 		}); 
 
+	};
+
+	let labelFeedback = function (feedbackId) {
+		let feedbackwithId = [];
+		return new Promise((resolve, reject) => {
+		$http.get(`${fbCreds.databaseURL}/feedback/${feedbackId}.json`)
+		.success((feedbackItem) => {
+			console.log("feedbackItem is what?", feedbackItem);
+			let singleFeedback = feedbackItem;
+			singleFeedback.uid = singleFeedback.name;
+			console.log("singlefeedback's uid is?",singleFeedback.name );
+			feedbackwithId.push(singleFeedback);
+		});
+		resolve(feedbackwithId);
+	  });
 	};
 
 	let getAllFeedback = function () {
@@ -36,5 +52,5 @@ app.factory("FeedbackFactory", function ($http, fbCreds ) {
 
 
 
-	return {postNewFeedback, getAllFeedback};
+	return {postNewFeedback, getAllFeedback, labelFeedback};
 });

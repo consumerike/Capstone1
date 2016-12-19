@@ -49,6 +49,7 @@ app.controller("SearchResults", function($scope, CompanyFactory, SearchTerm, Use
 
    };
 
+
 });
 
 
