@@ -53,18 +53,27 @@ app.factory("FeedbackFactory", function ($http, fbCreds ) {
 
     	let getAllFeedbackByCo = function (id) {
         	return new Promise((resolve, reject) => {
+	    		let FeedbackByCoArray = []; //need to push feedbackObjects[key] to this array in each instance...
+        		
         		$http.get(`${fbCreds.databaseURL}/feedback.json?orderBy="id"&equalTo="${id}"`)
         		.success((feedbackObjects) => {
-        			console.log("feedbackObjects success??",feedbackObjects );
-
+        			console.log("feedbackObjects here is an object of objects",feedbackObjects );
         			Object.keys(feedbackObjects).forEach((key => {
-        				console.log("what is key??",key );
-        				console.log("what is id??",id );
-        				console.log("key[id] is what then??" );
-        				if (id) {
-        					resolve (feedbackObjects[key]);
-        				}
+        				console.log("what is feedbackObjects[key]??",feedbackObjects[key] );
+        				// if (id) {
+        					FeedbackByCoArray.push(feedbackObjects[key]);
+        					// resolve (feedbackObjects[key]);
+        				// }
         			}));
+        			console.log("isn't this the array?",FeedbackByCoArray );
+        			resolve (FeedbackByCoArray);
+        			// Object.keys(feedbackObjects).forEach((key => {
+        			// 	console.log("what is key??",key );
+        			// 	console.log("what is id??",id );
+        			// 	if (id) {
+        			// 		resolve (feedbackObjects[key]);
+        			// 	}
+        			// }));
         		})
         		.error((error) => {
         			reject(error);

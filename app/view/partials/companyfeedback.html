@@ -11,11 +11,13 @@
 	  
 	</form>
 
-	
-	
+	<label>List of Topics:</label>
+	<div ng-repeat="feedback in feedbacks">
+	<div>{{feedback.topic}}  {{feedback.rating}}</div>
+	</div>
 
 </div>
-<section ng-model="newFeedback.topic">{{topic}}  {{rating}}</section>
+
 
 
 

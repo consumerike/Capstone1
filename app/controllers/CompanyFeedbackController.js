@@ -10,6 +10,39 @@ app.controller("CompanyFeedbackController", function($scope, CompanyFactory, Fee
     );
 
 
+    FeedbackFactory.getAllFeedbackByCo($routeParams.id)
+  .then( (feedbackArray) => {
+      console.log("what is the feedback array look like now?",feedbackArray );
+      // feedbackArray = feedback;
+
+      $scope.feedbacks = feedbackArray;
+      $scope.$apply();
+  }
+  );
+
+  $scope.updateList = () => {
+          FeedbackFactory.getAllFeedbackByCo($routeParams.id)
+        .then( (feedbackArray) => {
+            console.log("what is the feedback array look like now?",feedbackArray );
+            // feedbackArray = feedback;
+
+            $scope.feedbacks = feedbackArray;
+            $scope.$apply();
+        }
+        );
+  };
+
+
+
+  // FeedbackFactory.getAllFeedbackByCo()
+  // .then ( 
+  //       (ArrayOfFeedbackObjects) => {
+  //           console.log("calling getAllFeedback..inCofeedbackCtrl", ArrayOfFeedbackObjects );
+  //           $scope.feedbacks = ArrayOfFeedbackObjects;
+  //       }
+  // );
+
+
   $scope.newFeedback = {
   	topic: "",
   	rating: [{"date": Date.now()}],
@@ -23,6 +56,7 @@ app.controller("CompanyFeedbackController", function($scope, CompanyFactory, Fee
   	FeedbackFactory.postNewFeedback($scope.newFeedback)
   	.then((posted) => {
   		$scope.newFeedback.topic = "";
+        $scope.updateList();
   		$scope.$apply();
   	});
 
@@ -30,6 +64,9 @@ app.controller("CompanyFeedbackController", function($scope, CompanyFactory, Fee
   .then( (feedbackArray) => {
   	  console.log("what is the feedback array look like now?",feedbackArray );
   	  // feedbackArray = feedback;
+
+      $scope.feedbacks = feedbackArray;
+      $scope.$apply();
   }
   );
   };
