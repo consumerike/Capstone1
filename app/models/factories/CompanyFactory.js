@@ -35,15 +35,27 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
        return myCompanies;
      };
 
-     let getSingleCo = (companyId) => {
+     let getSingleCo = (id) => {
         console.log("running getSinglco");
+        // let id = company.id;
         return new Promise((resolve, reject) => {
-            $http.get(`${fbCreds.URL}/companies.json?"${companyId}"`)
-            .success((companyObject) => {
-                resolve(companyObject);
+            $http.get(`${fbCreds.databaseURL}/companies.json?"${id}"`)
+            .success((companyObjects) => {
+                console.log("success??callingthisviacompanyfeedbackcontroller", companyObjects );
+                Object.keys(companyObjects).forEach((key) => {
+                    if (id === key) {
+                        resolve(companyObjects[key]);
+                    }
+                });
+            })
+            .error((error) => {
+                reject (error);
+            });
+
+
             }
             );
-        });
+        
      };
 
 
@@ -57,8 +69,8 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
             console.log("companyObject.uid",companyObject.uid );
 			$http.post(`${fbCreds.databaseURL}/companies.json`, angular.toJson(companyObject))
 			.success((companyObject) => {
-                console.log("can i add a new key here?", companyObject );
-                companyObject.companyId = companyObject.name;
+                console.log("after successful post this is the companyObject:", companyObject );
+                // companyObject.companyId = companyObject.name;
 				resolve(companyObject);
 			})
 		
@@ -92,6 +104,6 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
   
 
 
-
-	return {companySearch,getSingleCo, postNewCompany, getCompanies, myCompanies, userCompanies, getUserCompanies};
+    // return {getSingleCo};
+	return {companySearch, postNewCompany, getSingleCo, getCompanies, myCompanies, userCompanies, getUserCompanies};
 });

@@ -51,10 +51,10 @@ app.config( function($routeProvider) {
 		templateUrl: 'app/view/partials/myfeedback.html',
 		controller: 'MyFeedbackController'
 	})	
-	.when('/myfeedback/:companyId', {
+	.when('/myfeedback/:id', {
 		templateUrl: 'app/view/partials/companyfeedback.html',
 		controller: 'CompanyFeedbackController'
-		// ,resolve: {isAuth}
+		
 
 	})	
 	.when('/topic/:topicID', {

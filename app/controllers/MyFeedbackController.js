@@ -1,20 +1,33 @@
 "use strict";
 app.controller("MyFeedbackController", function (UserFactory, $location, $window, FeedbackFactory,$routeParams, CompanyFactory, $scope) {
+	CompanyFactory.userCompanies()
+	.then ((allTheCompanies)=> {
+		console.log("allTheCompanies?", allTheCompanies );
+		$scope.myCompanies = allTheCompanies;
+		$scope.$apply();
+	});
 	$scope.userName = "Friend";
-	$scope.myCompanies = CompanyFactory.getUserCompanies();
+
+
+	
 	// $scope.companyId = company.id;
 
 	// CompanyFactory.getSingleCo()
 
 
 	$scope.goToCompanyPage = function (company){
-		let companyId = company.id;
-		company.topics = [];
+		// let id = company.id;
+		console.log("this ran but does nothing" );
+		// company.topics = [];
 	    // company.topicName = $window.prompt("enter topic");
 	    // company.rating = $window.prompt("enter topic rating between 1-5");
 	    // company.feedbackMsg = $window.prompt("enter your feedback");
-		FeedbackFactory.postNewFeedback(company);
-		$location.path('/myfeedback/:companyId');
+		// FeedbackFactory.postNewFeedback(company)
+		// .then(
+		// 	console.log("companyId here??",companyId )	
+		// );
+		
+		// $location.path('/myfeedback/:id');
 
 		// . then(FeedbackFactory.labelFeedback());
 		// 

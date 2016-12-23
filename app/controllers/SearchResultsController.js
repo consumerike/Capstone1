@@ -1,5 +1,5 @@
 "use strict";
-app.controller("SearchResults", function($scope, CompanyFactory, SearchTerm, UserFactory, $window, $location ) {
+app.controller("SearchResults", function($scope, CompanyFactory, SearchTerm, UserFactory, $location ) {
 	
     // CompanyFactory.companySearch(StorageFactory.companies)
     // .then( (companyArray) => {
@@ -36,10 +36,13 @@ app.controller("SearchResults", function($scope, CompanyFactory, SearchTerm, Use
     if (isAuth()){
       console.log("isAuth ??", isAuth() );
     console.log("UserFactory.getUser()", UserFactory.getUser() );
+    console.log("does it work at this point or not?" );
       CompanyFactory.postNewCompany(company)
       .then ( (response) => {
-        console.log("what's the response here??",response );
-         $scope.$apply();
+        console.log("the response of the post is the FBgeneratedID:",response );
+        $scope.$apply();
+        $location.url('/myfeedback');
+
       });
     }
     else {

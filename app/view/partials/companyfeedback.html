@@ -1,4 +1,21 @@
-{{collective.squareLogo}}
-{{collective.id}}
-{{collective.name}}
+
+<div><img src="{{singleCo.squareLogo}}"></div>
+<h1>{{singleCo.name}}</h1>
+<div>
+	<form>
+	  <div class="form-group">
+	    <!-- TODO: Hook up this form to our JS for submitting -->
+	    <input type="text" class="form-control" placeholder="What's on your mind?" ng-model="newFeedback.topic"/>
+	    <button class="btn btn-default" ng-click="addNewFeedback()">{{btnText}}</button>
+	  </div>
+	  
+	</form>
+
+	
+	
+
+</div>
+<section ng-model="newFeedback.topic">{{topic}}  {{rating}}</section>
+
+
 
