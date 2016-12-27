@@ -81,6 +81,10 @@ app.factory("FeedbackFactory", function ($http, fbCreds ) {
         	});
         };
 
+        let feedbackUpdate = function () {
+        	//put here?
+        };
+
 
 
 	return {postNewFeedback, getAllFeedbackByCo, labelFeedback};

@@ -1,6 +1,6 @@
 "use strict"; 
 
-var app = angular.module("Upship", ["ngRoute"]); 
+var app = angular.module("Upship", ["ngRoute", "ngMaterial"]); 
 
 let isAuth = (UserFactory) => new Promise((resolve, reject) => {
 	UserFactory.isAuthenticated()
@@ -64,5 +64,13 @@ app.config( function($routeProvider) {
 
 	})
 	.otherwise('/');
+	// $stateProvider
+	// .state('feelings', {
+	// 	url:
+	// 	templateUrl:
+	// 	controller:
+	// }
+
+	// )
 
 });

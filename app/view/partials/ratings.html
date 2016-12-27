@@ -1,0 +1,39 @@
+<div ng-controller="CompanyFeedbackController">
+<md-dialog aria-label="Feelings">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        
+
+        <md-button class="md-icon-button" ng-click="cancel()" >
+        CLOSE
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <select ng-model="selectedValue" ng-options="value for value in ratings"></select>
+     
+     <!-- Insert the script tags for emoji mapping -->
+      {{ratings}}
+
+      </div>
+    </md-dialog-content>
+    <!-- <md-dialog-actions layout="row"> -->
+      <!--  <md-button href="http://${}" target="_blank" md-autofocus>
+         More on company site!
+       </md-button> -->
+       <!-- <span flex></span> -->
+       
+     <!--   <md-button ng-click="answer('useful')">
+         feeling
+       </md-button>
+     </md-dialog-actions> -->
+
+     <input ng-model="feedback.message" type="" name=""> <button ng-click="addFeelings(selectedValue)"></button>
+   
+  </form>
+</md-dialog>
+</div>

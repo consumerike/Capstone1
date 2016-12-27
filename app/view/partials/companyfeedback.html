@@ -13,11 +13,8 @@
 
 	<label>List of Topics:</label>
 	<div ng-repeat="feedback in feedbacks">
-	<div>{{feedback.topic}}  {{feedback.rating}}</div>
+<!-- 	"showAdvanced...is from ngMaterial to open up a modal" or should it be a function such as "giveRating(feedback)" function-->
+		<div><a ng-click="showAdvanced($event)">{{feedback.topic}}  {{feedback.rating}}</a></div>
 	</div>
 
 </div>
-
-
-
-
