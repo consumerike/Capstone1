@@ -1,5 +1,5 @@
 "use strict";
-app.factory("FeedbackFactory", function ($http, fbCreds ) {
+app.factory("FeedbackFactory", function ($http,$mdDialog, fbCreds ) {
 
 	let postNewFeedback = (feedbackObject) => {
 		return new Promise( (resolve, reject) => {
@@ -84,6 +84,8 @@ app.factory("FeedbackFactory", function ($http, fbCreds ) {
         let feedbackUpdate = function () {
         	//put here?
         };
+
+       
 
 
 

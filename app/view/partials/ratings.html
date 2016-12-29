@@ -14,10 +14,13 @@
 
     <md-dialog-content>
       <div class="md-dialog-content">
+       
         <select ng-model="selectedValue" ng-options="value for value in ratings"></select>
+        }
      
      <!-- Insert the script tags for emoji mapping -->
       {{ratings}}
+      
 
       </div>
     </md-dialog-content>
@@ -31,8 +34,9 @@
          feeling
        </md-button>
      </md-dialog-actions> -->
+     {{message}}
 
-     <input ng-model="feedback.message" type="" name=""> <button ng-click="addFeelings(selectedValue)"></button>
+     <input ng-model="message" type="" name=""> <button ng-click="addFeelings(feedback, message, rating)"></button>
    
   </form>
 </md-dialog>
