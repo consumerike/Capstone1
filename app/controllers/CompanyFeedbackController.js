@@ -79,6 +79,7 @@ app.controller("CompanyFeedbackController", function($scope, CompanyFactory, Fee
     $mdDialog.show({
       templateUrl: 'app/view/partials/ratings.html',
       controller: 'DialogController',
+      // path: ''
       // templateUrl: 'view/partials/companyfeedback.html',
       parent: angular.element(document.body),
       targetEvent: ev,

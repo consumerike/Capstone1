@@ -1,11 +1,26 @@
 "use strict";
 
-app.controller("DialogController", function ($mdDialog, FeedbackFactory,$routeParams, CompanyFactory, ModalFactory, $scope) {
+app.controller("DialogController", function ($mdDialog, FeedbackFactory,$routeParams, CompanyFactory, ModalFactory, $scope, $http) {
 	// console.log("feedback first line",feedback );
 console.log("$scope.feedback",$scope.feedback); 
 let selectedValue;
 $scope.customFullscreen = true;
 let feedback = ModalFactory.getFeedback();
+
+//good to go here...
+
+//start playground//
+
+feedback.message = $scope.message;
+feedback.rating = $scope.selectedValue;
+console.log("within playground what is feedback",feedback );
+
+
+
+
+//end playground
+
+
 feedback.message = $scope.message;
 feedback.rating = $scope.selectedValue;
 console.log("feedback , say what??",feedback );
@@ -27,11 +42,16 @@ $scope.selectedValue = null;
 // 	  };
 
 
-  $scope.addFeelings = function (feedback, message, selectedValue) {
-  	console.log("feedback is what in addfeelingscurrently",feedback );
+  $scope.addFeelings = function (message, selectedValue) {
+  	console.log("what is message in addfeelings?",message );
+  	console.log("what is selectedvalue in addfeelings?",selectedValue );
+  	feedback.message = message;
+  	feedback.rating = selectedValue;
+  	console.log("what is feedback in addfeelings??",feedback );
+  	//RIGHT HERE TRYING TO PUSH TO FIREBASE
+  	// $http.post
     // feedback.message = $scope.message;
     // feedback.rating = selectedValue;
-    console.log("what would feedback be at this time in history??", feedback);
     //here we push it back up to Firebase...do we know the topicID??
   };
 // console.log("feedback yo",feedback );
@@ -43,14 +63,8 @@ $scope.selectedValue = null;
     
   };
 
-  $scope.cancel = function(message, selection, feedback) {
-  	feedback.message = message;
-  	feedback.rating = selection;
-  	console.log("messing round what's scopefeedbkmsg?",$scope.feedback.message );
-  	console.log("what is feedback right before cancel than?",feedback );
-  	console.log("$scope.message in cancel",$scope.message );
-  	console.log("$scope.selectedval in cancel",$scope.selectedValue );
-  	//prepare to send to FB!
+  $scope.cancel = function(feedback) {
+
     $mdDialog.cancel();
 
   };
@@ -67,5 +81,6 @@ $scope.selectedValue = null;
 
 
 console.log("feedback is now over muaha",feedback );
+console.log("at end what is $scope.feedback??",$scope.feedback );
 
 });
