@@ -8,8 +8,6 @@ app.controller("MyFeedbackController", function (UserFactory, $location, $window
 	});
 	$scope.userName = "Friend";
 
-
-	
 	// $scope.companyId = company.id;
 
 	// CompanyFactory.getSingleCo()

@@ -6,7 +6,7 @@ console.log("$scope.feedback",$scope.feedback);
 let selectedValue;
 $scope.customFullscreen = true;
 let feedback = ModalFactory.getFeedback();
-
+feedback.topicId = $routeParams.topicId;
 //good to go here...
 
 //start playground//

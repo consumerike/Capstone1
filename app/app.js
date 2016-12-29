@@ -40,8 +40,6 @@ app.config( function($routeProvider) {
 
 	})
 
-	
-
 	.when('/login', { 
 		templateUrl: 'app/view/partials/login.html',
 		controller: 'LoginController'
@@ -57,6 +55,11 @@ app.config( function($routeProvider) {
 		
 
 	})	
+	.when('/myfeedback/:id/:topicId', {
+		templateUrl: 'app/view/partials/ratings.html',
+		controller: 'DialogController'
+
+	})
 	.when('/topic/:topicID', {
 		templateUrl: 'app/view/partials/topicmodal.html',
 		controller: 'TopicController',

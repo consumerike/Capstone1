@@ -1,13 +1,16 @@
 "use strict";
 app.factory("FeedbackFactory", function ($http,$mdDialog, fbCreds ) {
+	let  feedbackswithId = [];
+
+
 
 	let postNewFeedback = (feedbackObject) => {
 		return new Promise( (resolve, reject) => {
 			// feedbackObject.companyUID = 
 			$http.post(`${fbCreds.databaseURL}/feedback.json`, angular.toJson(feedbackObject))
 			.success((feedbackObject) => {
-				console.log("PostNewFeedback is complete." );
-
+				console.log("PostNewFeedback is complete: what's the object??", feedbackObject );
+				feedbackObject.name = feedbackObject.topicId;
 				resolve(feedbackObject);
 			})
 		
@@ -16,6 +19,31 @@ app.factory("FeedbackFactory", function ($http,$mdDialog, fbCreds ) {
 		});
 		}); 
 
+	};
+
+		let prepFeedbacks = function () {
+
+			feedbackswithId = [];
+	    	return new Promise((resolve, reject) => {
+	    		$http.get(`${fbCreds.databaseURL}/feedback.json`)
+	    		.success((feedbackObject) => {
+	                console.log("what is feedbackObject?", feedbackObject);
+	    			let feedbackCollection = feedbackObject;
+	    			Object.keys(feedbackCollection).forEach((key => {
+	    				feedbackCollection[key].topicId = key;
+	    				feedbackswithId.push(feedbackCollection[key]);
+	    			}));
+	                console.log("what are feedbackswithId?",feedbackswithId );
+	    			resolve(feedbackswithId);
+	    		}).error((error) => {
+	    			reject(error);
+	    		});
+	    	});
+	    };
+
+	let overwriteFeedbacks = function (preppedData) {
+			console.log("delete this and override or what??");
+			// $http.put(`${fbCreds.databaseURL}/feedback.json`, angular.toJson(preppedData));			
 	};
 
 	let labelFeedback = function (feedbackId) {
@@ -89,5 +117,5 @@ app.factory("FeedbackFactory", function ($http,$mdDialog, fbCreds ) {
 
 
 
-	return {postNewFeedback, getAllFeedbackByCo, labelFeedback};
+	return {postNewFeedback, overwriteFeedbacks, getAllFeedbackByCo, labelFeedback, prepFeedbacks};
 });

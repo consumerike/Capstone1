@@ -1,6 +1,15 @@
 "use strict";
 app.controller("CompanyFeedbackController", function($scope, CompanyFactory, FeedbackFactory, ModalFactory, $routeParams, $mdDialog) {
 
+  FeedbackFactory.prepFeedbacks()
+  . then ( (feedbackWtopicId) => {
+    console.log("feedbackWtopicsId say what",feedbackWtopicId );
+     FeedbackFactory.overwriteFeedbacks(feedbackWtopicId);
+  }
+   
+   
+  );
+
   CompanyFactory.getSingleCo($routeParams.id)
     .then( (companyObject) => {
       console.log("companyObject is what?",companyObject );
@@ -9,7 +18,7 @@ app.controller("CompanyFeedbackController", function($scope, CompanyFactory, Fee
     } 
     );
 
-
+//right here we need to have the topics right
     FeedbackFactory.getAllFeedbackByCo($routeParams.id)
   .then( (feedbackArray) => {
       console.log("what is the feedback array look like now?",feedbackArray );
@@ -79,7 +88,7 @@ app.controller("CompanyFeedbackController", function($scope, CompanyFactory, Fee
     $mdDialog.show({
       templateUrl: 'app/view/partials/ratings.html',
       controller: 'DialogController',
-      // path: ''
+      path: '/myfeedback/:id/:topicId',
       // templateUrl: 'view/partials/companyfeedback.html',
       parent: angular.element(document.body),
       targetEvent: ev,
