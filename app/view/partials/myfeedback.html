@@ -2,7 +2,7 @@
 
  <div ng-repeat="company in myCompanies">
  	<a ng-href="#/myfeedback/{{company.id}}"><img src={{company.squareLogo}}></a>
- <div class="col-xs-2" ><button value="Go" class="btn btn-danger"></button></div>
+ <div class="col-xs-2" ><button ng-click="deleteCompany(company)" value="Go" class="btn btn-danger"></button></div>
  
  </div>
 

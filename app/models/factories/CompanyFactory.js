@@ -88,6 +88,7 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
     		$http.get(`${fbCreds.databaseURL}/companies.json`)
     		.success((companyObject) => {
                 console.log("what is companyObject?", companyObject);
+                myCompanies = [];
     			let companyCollection = companyObject;
     			Object.keys(companyCollection).forEach((key => {
     				companyCollection[key].id = key;
@@ -101,9 +102,13 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
     	});
     };
 
+    let deleteCompany = function (company) {
+        $http.delete(`${fbCreds.databaseURL}/companies/${company.id}.json`);
+    };
+
   
 
 
     // return {getSingleCo};
-	return {companySearch, postNewCompany, getSingleCo, getCompanies, myCompanies, userCompanies, getUserCompanies};
+	return {companySearch, postNewCompany,deleteCompany, getSingleCo, getCompanies, myCompanies, userCompanies, getUserCompanies};
 });

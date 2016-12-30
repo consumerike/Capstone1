@@ -6,12 +6,27 @@ app.controller("MyFeedbackController", function (UserFactory, $location, $window
 		$scope.myCompanies = allTheCompanies;
 		$scope.$apply();
 	});
+
+	$scope.updateView = () => {
+		CompanyFactory.userCompanies()
+		.then ((allTheCompanies)=> {
+			console.log("allTheCompanies?", allTheCompanies );
+			$scope.myCompanies = allTheCompanies;
+			$scope.$apply();
+		});
+	};
+
 	$scope.userName = "Friend";
 
 	// $scope.companyId = company.id;
 
 	// CompanyFactory.getSingleCo()
 
+	$scope.deleteCompany = function (company) {
+		CompanyFactory.deleteCompany(company);
+		$scope.updateView();
+		
+	};
 
 	$scope.goToCompanyPage = function (company){
 		// let id = company.id;
