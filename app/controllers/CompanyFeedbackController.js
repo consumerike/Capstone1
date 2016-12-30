@@ -5,6 +5,7 @@ app.controller("CompanyFeedbackController", function($scope, CompanyFactory, Fee
   . then ( (feedbackWtopicId) => {
     console.log("feedbackWtopicsId say what",feedbackWtopicId );
      FeedbackFactory.overwriteFeedbacks(feedbackWtopicId);
+     $scope.$apply();
   }
    
    
@@ -82,13 +83,13 @@ app.controller("CompanyFeedbackController", function($scope, CompanyFactory, Fee
 
 
  $scope.showAdvanced = function(feedback, ev) {
-    console.log("got feedback??",feedback );
+    console.log("got feedbackornot??",feedback );
     // feedback = $scope.feedback;
     ModalFactory.addFeedback(feedback);
     $mdDialog.show({
       templateUrl: 'app/view/partials/ratings.html',
       controller: 'DialogController',
-      path: '/myfeedback/:id/:topicId',
+      path: '/#myfeedback/:id/:topicId',
       // templateUrl: 'view/partials/companyfeedback.html',
       parent: angular.element(document.body),
       targetEvent: ev,

@@ -15,12 +15,12 @@
 
 	<div ng-repeat="feedback in feedbacks">
 <!-- 	"showAdvanced...is from ngMaterial to open up a modal" or should it be a function such as 	"giveRating(feedback)" function-->
-		<div><a ng-href="#/myfeedback/{{feedback.id}}/{{feedback.topicId}}">
+		<!-- <div><a ng-href="#/myfeedback/{{feedback.id}}/{{feedback.topicId}}">
 
-	{{feedback.topic}}  {{feedback.rating}}</a></div>
-		<!-- <div><a ng-click="showAdvanced(feedback)">
+	{{feedback.topic}}  {{feedback.rating}}</a></div> -->
+		<div><a ng-click="showAdvanced(feedback)">
 
-		{{feedback.topic}}  {{feedback.rating}}</a></div> -->
+		{{feedback.topic}}  {{feedback.rating}}</a></div>
 	</div>
 
 </div>

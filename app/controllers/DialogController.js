@@ -6,7 +6,7 @@ console.log("$scope.feedback",$scope.feedback);
 let selectedValue;
 $scope.customFullscreen = true;
 let feedback = ModalFactory.getFeedback();
-feedback.topicId = $routeParams.topicId;
+
 //good to go here...
 
 //start playground//
@@ -49,6 +49,7 @@ $scope.selectedValue = null;
   	feedback.rating = selectedValue;
   	console.log("what is feedback in addfeelings??",feedback );
   	//RIGHT HERE TRYING TO PUSH TO FIREBASE
+    FeedbackFactory.feedbackUpdate(feedback);
   	// $http.post
     // feedback.message = $scope.message;
     // feedback.rating = selectedValue;

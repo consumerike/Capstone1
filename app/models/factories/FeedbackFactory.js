@@ -43,8 +43,10 @@ app.factory("FeedbackFactory", function ($http,$mdDialog, fbCreds ) {
 
 	let overwriteFeedbacks = function (preppedData) {
 			console.log("delete this and override or what??");
-			// $http.put(`${fbCreds.databaseURL}/feedback.json`, angular.toJson(preppedData));			
+			$http.put(`${fbCreds.databaseURL}/feedback.json`, angular.toJson(preppedData));			
 	};
+
+	
 
 	let labelFeedback = function (feedbackId) {
 		let feedbackwithId = [];
@@ -109,13 +111,15 @@ app.factory("FeedbackFactory", function ($http,$mdDialog, fbCreds ) {
         	});
         };
 
-        let feedbackUpdate = function () {
-        	//put here?
+        let feedbackUpdate = function (fd) {
+        	console.log("what is fd here??", fd);
+			$http.put(`${fbCreds.databaseURL}/feedback/${fd.topicId}.json`, angular.toJson(fd));			
+
         };
 
        
 
 
 
-	return {postNewFeedback, overwriteFeedbacks, getAllFeedbackByCo, labelFeedback, prepFeedbacks};
+	return {postNewFeedback, feedbackUpdate, overwriteFeedbacks, getAllFeedbackByCo, labelFeedback, prepFeedbacks};
 });
