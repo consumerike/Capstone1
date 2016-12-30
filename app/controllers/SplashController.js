@@ -26,6 +26,14 @@ app.controller("SplashController", function($scope, CompanyFactory, $location) {
 		});
 	};
 
+	$scope.navItems = [
+
+
+	{name: "Logout", url: '#/logout'},
+	{name: "My Companies", url:'#/myfeedback'},
+
+	];
+
 	// $scope.register = () => {
 	// 	UserFactory.createUser($scope.account)
 	// 	.then( (userData) => {

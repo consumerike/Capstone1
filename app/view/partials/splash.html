@@ -3,8 +3,15 @@
 	<input class="company_search_bar" type="text" name="company_search" placeholder="Search by company name..." ng-model="searchText">
 	<button value="Search" class="btn btn-info" ng-click="search(searchText)"></button>
 
-	<input class="email_bar" type="text" autofocus="true" ng-model="account.email" placeholder="Enter email..."> 
-    <input class="password_bar" type="password" ng-model="account.password" placeholder="Enter secure password...">
+	<!-- <input class="email_bar" type="text" autofocus="true" ng-model="account.email" placeholder="Enter email...">  -->
+    <!-- <input class="password_bar" type="password" ng-model="account.password" placeholder="Enter secure password..."> -->
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!-- TODO: Use Angular to loop through nav items -->
+      <ul class="nav navbar-nav navbar-right" ng-repeat = "item in navItems">
+        <li><a href="{{item.url}}">{{item.name}}</a></li>
+      </ul>
+    </div>
 	
 	<!-- <button class="btn btn-info" ng-click="login()">Login</button>
 	<button class="btn btn-default" ng-click="register()">Register</button>

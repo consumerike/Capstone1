@@ -1,6 +1,6 @@
 "use strict"; 
 
-app.factory("UserFactory", function() {
+app.factory("UserFactory", function($location) {
 	
 	let currentUser = null; 
 
@@ -16,7 +16,9 @@ app.factory("UserFactory", function() {
 	};
 
 	let logoutUser = function(userObj) {
+		$location.path('#/');
 		return firebase.auth().signOut();
+
 	};
 
 	let isAuthenticated = function() {
