@@ -1,19 +1,33 @@
-<nav class="nav_bar" ng-controller="SplashController">
-	
-	<input class="company_search_bar" type="text" name="company_search" placeholder="Search by company name..." ng-model="searchText">
-	<button value="Search" class="btn btn-info" ng-click="search(searchText)"></button>
+<nav class="navbar navbar-inverse" ng-controller="SplashController">
 
+  <a class="navbar-brand" href="#">Upship!</a>
+   <div class="navbar-form navbar-left">
+	<input class="company_search_bar" type="text" name="company_search" placeholder="Search by company name..." ng-model="searchText">
+	<button type="submit" value="Search" class="btn btn-default" ng-click="search(searchText)">GO</button>
+  </div>
+
+  <div>
+    <a href='https://www.glassdoor.com/index.htm'>powered by <img src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search' /></a>
+
+  </div>
+  
+
+  <ul class="nav navbar-nav navbar-right" ng-repeat = "item in navItems">
+    <li><a href="{{item.url}}">{{item.name}}</a></li>
+  </ul>
+
+</nav>
 	<!-- <input class="email_bar" type="text" autofocus="true" ng-model="account.email" placeholder="Enter email...">  -->
     <!-- <input class="password_bar" type="password" ng-model="account.password" placeholder="Enter secure password..."> -->
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <!-- TODO: Use Angular to loop through nav items -->
+<!--     <div class="bs-example-navbar-collapse-1">
+      
       <ul class="nav navbar-nav navbar-right" ng-repeat = "item in navItems">
         <li><a href="{{item.url}}">{{item.name}}</a></li>
       </ul>
     </div>
 	
-	<!-- <button class="btn btn-info" ng-click="login()">Login</button>
+	<button class="btn btn-info" ng-click="login()">Login</button>
 	<button class="btn btn-default" ng-click="register()">Register</button>
-	<button class="btn btn-info" ng-click="logout()">Logout</button> -->
-</nav>
+	<button class="btn btn-info" ng-click="logout()">Logout</button>
+</nav> -->

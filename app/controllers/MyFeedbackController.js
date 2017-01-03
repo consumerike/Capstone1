@@ -23,8 +23,11 @@ app.controller("MyFeedbackController", function (UserFactory, $location, $window
 	// CompanyFactory.getSingleCo()
 
 	$scope.deleteCompany = function (company) {
-		CompanyFactory.deleteCompany(company);
-		$scope.updateView();
+		CompanyFactory.deleteCompany(company)
+		.then( function () {
+			$scope.updateView();
+
+		});
 		
 	};
 

@@ -19,7 +19,8 @@ app.controller("SplashController", function($scope, CompanyFactory, $location) {
 	$scope.search = (searchTerm) => { //normally I would want to put in a search term and pass along
 		CompanyFactory.companySearch(searchTerm)
 		.then( (response) => {
-			// console.log("what is the response?", response);
+
+			console.log("what is the response?", response);
 			// StorageFactory.addStorage(response);
 			$scope.$apply();
 			$location.url('/companysearch');

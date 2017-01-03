@@ -18,7 +18,8 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
     			 	companies.push(element);
     			   }));
                   console.log("what are companies?",companies );
-			}); 
+                  return companies;
+			})
     		resolve(companies);
     	// 	.error((error) => {
     	// 		reject(error);
@@ -99,11 +100,17 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
     		}).error((error) => {
     			reject(error);
     		});
-    	});
+    	}); 
     };
 
     let deleteCompany = function (company) {
-        $http.delete(`${fbCreds.databaseURL}/companies/${company.id}.json`);
+       return new Promise( (resolve, reject) => {
+         $http.delete(`${fbCreds.databaseURL}/companies/${company.id}.json`)
+         .success ((data) => {
+            console.log("data",data );
+            resolve();
+         });
+       });
     };
 
   
