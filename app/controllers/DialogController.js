@@ -70,7 +70,8 @@ $scope.selectedValue = null;
 
   };
 
-  $scope.ratings = [0, 1, 2, 3, 4, 5];
+  // $scope.ratings = [0, 1, 2, 3, 4, 5];
+  $scope.ratings = [":rocket:", ":sad:", ":machine:" ,":happy:", ":laughing:"];
 
   // $scope.addFeelings = function ($scope.feedback, selectedValue) {
   //   $scope.feedback.message = $scope.message;

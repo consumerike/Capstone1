@@ -7,6 +7,7 @@
 
         <md-button class="md-icon-button" ng-click="cancel()" >
         CLOSE
+
           <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
         </md-button>
       </div>
@@ -15,12 +16,14 @@
     <md-dialog-content>
       <div class="md-dialog-content">
        
-        <select ng-model="selectedValue" ng-options="value for value in ratings"></select>
-        }
+        
+      <select ng-model="selectedValue" ng-options="value for value in ratings">
+      </select>
+        
      
-     <!-- Insert the script tags for emoji mapping -->
-      {{ratings}}
-      
+     <!-- Insert the script tags for emoji mapping -->  
+      {{ratings[0] | emoji}}
+     
 
       </div>
     </md-dialog-content>

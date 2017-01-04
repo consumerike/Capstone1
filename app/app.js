@@ -1,6 +1,6 @@
 "use strict"; 
 
-var app = angular.module("Upship", ["ngRoute", "ngMaterial"]); 
+var app = angular.module("Upship", ["ngRoute", "ngMaterial", "emoji"]); 
 
 let isAuth = (UserFactory) => new Promise((resolve, reject) => {
 	UserFactory.isAuthenticated()

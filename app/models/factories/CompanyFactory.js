@@ -19,7 +19,7 @@ app.factory("CompanyFactory", function ($http, $location,fbCreds,$routeParams, U
     			   }));
                   console.log("what are companies?",companies );
                   return companies;
-			})
+			});
     		resolve(companies);
     	// 	.error((error) => {
     	// 		reject(error);
